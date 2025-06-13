@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+*.log
+.venv/
+storage/cache/
+storage/*.html
+pytest_cache/
+.git/
+.idea/
+*.md
