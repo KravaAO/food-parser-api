@@ -7,14 +7,100 @@
 
 ## API Endpoints
 
-GET /all_products/
-    → Returns all available product data in JSON format.
+### `GET /all_products/`
 
-GET /products/<product_name>
-    → Returns full information for a specific product.
+Returns all available product data in JSON format.
 
-GET /products/<product_name>/<field>
-    → Returns only the requested field (e.g., calories, fats) for a specific product.
+#### ✅ Success Response:
+
+```json
+[
+  {
+    "name": "Тейсті Джуніор",
+    "description": "Класика, яку обожнюєш...",
+    ...
+  },
+  ...
+]
+```
+
+#### Error Response:
+
+```json
+{
+  "error": "Could not read the products file"
+}
+```
+
+---
+
+### `GET /products/<product_name>`
+
+Returns full information for a specific product.
+
+#### Success Response:
+
+```json
+{
+  "name": "Чікен Рол",
+  "description": "Загорнуті в тонкий...",
+  ...
+}
+```
+
+#### Not Found:
+
+```json
+{
+  "error": "Product not found"
+}
+```
+
+#### Internal Server Error:
+
+```json
+{
+  "error": "Parsing failed or product unavailable"
+}
+```
+
+---
+
+### `GET /products/<product_name>/<field>`
+
+Returns only the requested field (e.g., calories, fats) for a specific product.
+
+#### Success Response:
+
+```json
+{
+    "name": "МакКріспі Делюкс"
+}
+```
+
+#### Bad Request:
+
+```json
+{
+  "error": "Field 'some_field' is not allowed"
+}
+```
+
+#### Not Found:
+
+```json
+{
+  "error": "Product not found"
+}
+```
+
+#### Internal Server Error:
+
+```json
+{
+  "error": "Parsing failed or product unavailable"
+}
+```
 
 ## Running Locally
 
